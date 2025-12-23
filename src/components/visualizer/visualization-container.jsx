@@ -8,8 +8,7 @@ import { NQueensVisualizer } from "./nqueens-visualizer"
 import { TreeVisualizer } from "./tree-visualizer"
 import { CodeDisplay } from "./code-display"
 
-// const SORTING_ALGORITHMS = ["bubble-sort", "selection-sort", "insertion-sort", "quick-sort", "merge-sort", "heap-sort"]
-const SORTING_ALGORITHMS = []
+const SORTING_ALGORITHMS = ["bubble-sort", "merge-sort", "quick-sort", "heap-sort"]
 const SEARCHING_ALGORITHMS = ["linear-search", "binary-search"]
 const RECURSION_ALGORITHMS = ["factorial", "tower-of-hanoi"]
 const LINKED_LIST_ALGORITHMS = [

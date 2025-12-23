@@ -23,20 +23,18 @@ const ALGORITHMS = {
     // { id: "dfs", name: "Depth-First Search", complexity: "O(V + E)" },
     { id: "dijkstra", name: "Dijkstra's Algorithm", complexity: "O((V + E) log V)" },
   ],
+  Tree: [
+    { id: "bst-traversal", name: "BST Traversal", complexity: "O(n)" },
+    { id: "binary-search-tree", name: "Binary Search Tree", complexity: "O(log n)" },
+  ],
   Recursion: [
     { id: "factorial", name: "Factorial", complexity: "O(n)" },
     { id: "tower-of-hanoi", name: "Tower of Hanoi", complexity: "O(2ⁿ)" },
   ],
-  Tree: [
-    { id: "binary-search-tree", name: "Binary Search Tree", complexity: "O(log n)" },
-    { id: "bst-traversal", name: "BST Traversal", complexity: "O(n)" },
-  ],
   Sorting: [
-    // { id: "bubble-sort", name: "Bubble Sort", complexity: "O(n²)" },
-    // { id: "selection-sort", name: "Selection Sort", complexity: "O(n²)" },
-    // { id: "insertion-sort", name: "Insertion Sort", complexity: "O(n²)" },
+    { id: "bubble-sort", name: "Bubble Sort", complexity: "O(n²)" },
     { id: "merge-sort", name: "Merge Sort", complexity: "O(n log n)" },
-    // { id: "quick-sort", name: "Quick Sort", complexity: "O(n log n)" },
+    { id: "quick-sort", name: "Quick Sort", complexity: "O(n log n)" },
     { id: "heap-sort", name: "Heap Sort", complexity: "O(n log n)" },
   ],
   Backtracking: [

@@ -16,33 +16,15 @@ import {
 
 const ALL_ALGORITHMS = [
   // Sorting
-  // {
-  //   id: "bubble-sort",
-  //   name: "Bubble Sort",
-  //   category: "Sorting",
-  //   complexity: "O(n²)",
-  //   description: "Simple comparison-based sorting that repeatedly swaps adjacent elements",
-  //   difficulty: "Easy",
-  //   tags: ["comparison", "simple"],
-  // },
-  // {
-  //   id: "selection-sort",
-  //   name: "Selection Sort",
-  //   category: "Sorting",
-  //   complexity: "O(n²)",
-  //   description: "Selects the smallest element and places it at the beginning",
-  //   difficulty: "Easy",
-  //   tags: ["comparison", "simple"],
-  // },
-  // {
-  //   id: "insertion-sort",
-  //   name: "Insertion Sort",
-  //   category: "Sorting",
-  //   complexity: "O(n²)",
-  //   description: "Builds sorted array one item at a time by inserting elements",
-  //   difficulty: "Easy",
-  //   tags: ["comparison", "adaptive"],
-  // },
+  {
+    id: "bubble-sort",
+    name: "Bubble Sort",
+    category: "Sorting",
+    complexity: "O(n²)",
+    description: "Simple comparison-based sorting that repeatedly swaps adjacent elements",
+    difficulty: "Easy",
+    tags: ["comparison", "simple"],
+  },
   {
     id: "merge-sort",
     name: "Merge Sort",
@@ -52,15 +34,15 @@ const ALL_ALGORITHMS = [
     difficulty: "Medium",
     tags: ["divide-and-conquer", "stable"],
   },
-  // {
-  //   id: "quick-sort",
-  //   name: "Quick Sort",
-  //   category: "Sorting",
-  //   complexity: "O(n log n)",
-  //   description: "Fast divide-and-conquer algorithm using pivot partitioning",
-  //   difficulty: "Medium",
-  //   tags: ["divide-and-conquer", "fast"],
-  // },
+  {
+    id: "quick-sort",
+    name: "Quick Sort",
+    category: "Sorting",
+    complexity: "O(n log n)",
+    description: "Fast divide-and-conquer algorithm using pivot partitioning",
+    difficulty: "Medium",
+    tags: ["divide-and-conquer", "fast"],
+  },
   {
     id: "heap-sort",
     name: "Heap Sort",
