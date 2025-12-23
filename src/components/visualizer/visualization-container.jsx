@@ -5,6 +5,7 @@ import { RecursionVisualizer } from "./recursion-visualizer"
 import { LinkedListVisualizer } from "./linked-list-visualizer"
 import { GraphVisualizer } from "./graph-visualizer"
 import { NQueensVisualizer } from "./nqueens-visualizer"
+import { TreeVisualizer } from "./tree-visualizer"
 import { CodeDisplay } from "./code-display"
 
 // const SORTING_ALGORITHMS = ["bubble-sort", "selection-sort", "insertion-sort", "quick-sort", "merge-sort", "heap-sort"]
@@ -18,6 +19,7 @@ const LINKED_LIST_ALGORITHMS = [
   "circular-doubly-list",
 ]
 const GRAPH_ALGORITHMS = ["bfs", "dfs", "dijkstra"]
+const TREE_ALGORITHMS = ["binary-search-tree", "bst-traversal"]
 const BACKTRACKING_ALGORITHMS = ["n-queens"]
 
 export function VisualizationContainer({ algorithm }) {
@@ -26,12 +28,13 @@ export function VisualizationContainer({ algorithm }) {
   const isRecursionAlgorithm = RECURSION_ALGORITHMS.includes(algorithm.id)
   const isLinkedListAlgorithm = LINKED_LIST_ALGORITHMS.includes(algorithm.id)
   const isGraphAlgorithm = GRAPH_ALGORITHMS.includes(algorithm.id)
+  const isTreeAlgorithm = TREE_ALGORITHMS.includes(algorithm.id)
   const isBacktrackingAlgorithm = BACKTRACKING_ALGORITHMS.includes(algorithm.id)
 
   return (
     <div className="h-full flex flex-col">
       {/* Main Content */}
-      <div className={`flex-1 flex gap-4 p-4 ${algorithm.id === 'dijkstra'? '': 'overflow-hidden' }`}>
+      <div className={`flex-1 flex gap-4 p-4 ${algorithm.id === 'dijkstra' || 'bst-traversal' || 'binary-search-tree' ? '' : 'overflow-hidden'}`}>
         {/* Visualizer */}
         <div className="flex-1 flex flex-col gap-4">
           <div className="flex-1 bg-card rounded-lg border border-border/50 overflow-hidden">
@@ -40,12 +43,14 @@ export function VisualizationContainer({ algorithm }) {
             {isRecursionAlgorithm && <RecursionVisualizer algorithm={algorithm} />}
             {isLinkedListAlgorithm && <LinkedListVisualizer algorithm={algorithm} />}
             {isGraphAlgorithm && <GraphVisualizer algorithm={algorithm} />}
+            {isTreeAlgorithm && <TreeVisualizer algorithm={algorithm} />}
             {isBacktrackingAlgorithm && <NQueensVisualizer />}
             {!isSortingAlgorithm &&
               !isSearchingAlgorithm &&
               !isRecursionAlgorithm &&
               !isLinkedListAlgorithm &&
               !isGraphAlgorithm &&
+              !isTreeAlgorithm &&
               !isBacktrackingAlgorithm && (
                 <div className="h-full flex items-center justify-center text-muted-foreground">
                   <p>Visualizer coming soon for {algorithm.name}</p>

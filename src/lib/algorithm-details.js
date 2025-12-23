@@ -1061,6 +1061,217 @@ function dijkstra(graph, start) {
       "Routing, shortest-path problems, network analysis, and maps where edges have non-negative weights.",
   },
 
+  "binary-search-tree": {
+    name: "Binary Search Tree",
+    language: "javascript",
+    code: `class TreeNode {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+class BinarySearchTree {
+  constructor() {
+    this.root = null;
+  }
+  
+  insert(value) {
+    const newNode = new TreeNode(value);
+    if (!this.root) {
+      this.root = newNode;
+      return;
+    }
+    
+    let current = this.root;
+    while (true) {
+      if (value < current.value) {
+        if (!current.left) {
+          current.left = newNode;
+          break;
+        }
+        current = current.left;
+      } else if (value > current.value) {
+        if (!current.right) {
+          current.right = newNode;
+          break;
+        }
+        current = current.right;
+      } else {
+        // Duplicate value, don't insert
+        break;
+      }
+    }
+  }
+  
+  search(value) {
+    let current = this.root;
+    while (current) {
+      if (value === current.value) {
+        return true;
+      } else if (value < current.value) {
+        current = current.left;
+      } else {
+        current = current.right;
+      }
+    }
+    return false;
+  }
+  
+  delete(value) {
+    this.root = this._deleteNode(this.root, value);
+  }
+  
+  _deleteNode(node, value) {
+    if (!node) return null;
+    
+    if (value < node.value) {
+      node.left = this._deleteNode(node.left, value);
+    } else if (value > node.value) {
+      node.right = this._deleteNode(node.right, value);
+    } else {
+      // Node found
+      if (!node.left && !node.right) return null;
+      if (!node.left) return node.right;
+      if (!node.right) return node.left;
+      
+      // Two children: find successor
+      let successor = node.right;
+      while (successor.left) successor = successor.left;
+      node.value = successor.value;
+      node.right = this._deleteNode(node.right, successor.value);
+    }
+    return node;
+  }
+}`,
+    complexity: {
+      best: "O(log n)",
+      average: "O(log n)",
+      worst: "O(n)",
+      space: "O(n)",
+    },
+    stability: false,
+    inPlace: false,
+    description:
+      "A Binary Search Tree (BST) is a hierarchical data structure where each node has at most two children, with left children smaller and right children larger than the parent. This property enables efficient searching, insertion, and deletion.",
+    howItWorks: [
+      "Each node contains a value and pointers to left and right children",
+      "Left subtree contains only nodes with values less than parent",
+      "Right subtree contains only nodes with values greater than parent",
+      "Operations follow the BST property to navigate the tree",
+      "Insert: Compare with current node, go left or right, repeat",
+      "Search: Compare target with nodes, follow left/right until found",
+      "Delete: Three cases - leaf, one child, or two children",
+    ],
+    advantages: [
+      "Fast search, insert, and delete operations - O(log n) average",
+      "Maintains sorted order of elements",
+      "Dynamic size - grows and shrinks as needed",
+      "Efficient for range queries and ordered traversals",
+      "Better than arrays for frequent insertions/deletions",
+    ],
+    disadvantages: [
+      "Can become unbalanced, degrading to O(n) worst case",
+      "Requires extra memory for pointers",
+      "No random access like arrays",
+      "Performance depends on tree balance",
+    ],
+    useCases:
+      "Database indexing, file systems, autocomplete systems, maintaining sorted data with frequent insertions/deletions, expression parsing, and implementing maps/sets.",
+  },
+
+  "bst-traversal": {
+    name: "BST Traversal",
+    language: "javascript",
+    code: `// Inorder Traversal (Left-Node-Right)
+// Produces sorted order for BST
+function inorderTraversal(node, result = []) {
+  if (!node) return result;
+  
+  inorderTraversal(node.left, result);
+  result.push(node.value);
+  inorderTraversal(node.right, result);
+  
+  return result;
+}
+
+// Preorder Traversal (Node-Left-Right)
+// Used for creating copy of tree
+function preorderTraversal(node, result = []) {
+  if (!node) return result;
+  
+  result.push(node.value);
+  preorderTraversal(node.left, result);
+  preorderTraversal(node.right, result);
+  
+  return result;
+}
+
+// Postorder Traversal (Left-Right-Node)
+// Used for deleting tree
+function postorderTraversal(node, result = []) {
+  if (!node) return result;
+  
+  postorderTraversal(node.left, result);
+  postorderTraversal(node.right, result);
+  result.push(node.value);
+  
+  return result;
+}
+
+// Level-order Traversal (Breadth-First)
+function levelOrderTraversal(root) {
+  if (!root) return [];
+  
+  const result = [];
+  const queue = [root];
+  
+  while (queue.length > 0) {
+    const node = queue.shift();
+    result.push(node.value);
+    
+    if (node.left) queue.push(node.left);
+    if (node.right) queue.push(node.right);
+  }
+  
+  return result;
+}`,
+    complexity: {
+      best: "O(n)",
+      average: "O(n)",
+      worst: "O(n)",
+      space: "O(h)",
+    },
+    stability: false,
+    inPlace: false,
+    description:
+      "Tree traversal is the process of visiting each node in a tree data structure exactly once. Different traversal orders serve different purposes - inorder gives sorted sequence, preorder for copying, postorder for deletion, and level-order for breadth-first processing.",
+    howItWorks: [
+      "Inorder (L-N-R): Visit left subtree, then node, then right subtree",
+      "Preorder (N-L-R): Visit node first, then left subtree, then right",
+      "Postorder (L-R-N): Visit left subtree, right subtree, then node",
+      "Level-order: Visit nodes level by level using a queue",
+      "Each traversal visits all n nodes exactly once",
+      "Recursion uses call stack for depth-first traversals",
+    ],
+    advantages: [
+      "Inorder traversal gives sorted order for BST",
+      "Different traversals suit different use cases",
+      "Simple recursive implementation",
+      "Foundation for many tree algorithms",
+      "Efficient O(n) time for all traversals",
+    ],
+    disadvantages: [
+      "Recursive versions use O(h) stack space",
+      "Can cause stack overflow for very deep trees",
+      "Level-order requires extra queue space",
+      "No random access to specific positions",
+    ],
+    useCases:
+      "Inorder: getting sorted data, validating BST. Preorder: copying tree, serialization, expression evaluation. Postorder: deleting tree, calculating directory sizes. Level-order: finding shortest path, BFS operations.",
+  },
+
   "n-queens": {
     name: "N-Queens Problem",
     language: "javascript",
