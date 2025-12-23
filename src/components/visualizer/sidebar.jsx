@@ -31,17 +31,17 @@ const ALGORITHMS = {
     { id: "factorial", name: "Factorial", complexity: "O(n)" },
     { id: "tower-of-hanoi", name: "Tower of Hanoi", complexity: "O(2ⁿ)" },
   ],
-  Sorting: [
-    { id: "bubble-sort", name: "Bubble Sort", complexity: "O(n²)" },
-    { id: "merge-sort", name: "Merge Sort", complexity: "O(n log n)" },
-    { id: "quick-sort", name: "Quick Sort", complexity: "O(n log n)" },
-    { id: "heap-sort", name: "Heap Sort", complexity: "O(n log n)" },
-  ],
-  Backtracking: [
-    // { id: "n-queens", name: "N-Queens", complexity: "O(N!)" },
-    { id: "maze-solver", name: "Maze Solver", complexity: "O(n²)" },
-    { id: "sudoku", name: "Sudoku Solver", complexity: "O(9^(n²))" },
-  ],
+  // Sorting: [
+  //   { id: "bubble-sort", name: "Bubble Sort", complexity: "O(n²)" },
+  //   { id: "merge-sort", name: "Merge Sort", complexity: "O(n log n)" },
+  //   { id: "quick-sort", name: "Quick Sort", complexity: "O(n log n)" },
+  //   { id: "heap-sort", name: "Heap Sort", complexity: "O(n log n)" },
+  // ],
+  // Backtracking: [
+  //   // { id: "n-queens", name: "N-Queens", complexity: "O(N!)" },
+  //   { id: "maze-solver", name: "Maze Solver", complexity: "O(n²)" },
+  //   { id: "sudoku", name: "Sudoku Solver", complexity: "O(9^(n²))" },
+  // ],
 }
 
 export function Sidebar({ onSelectAlgorithm }) {
