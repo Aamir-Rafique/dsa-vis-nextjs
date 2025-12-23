@@ -956,6 +956,111 @@ function dfsIterative(graph, startNode) {
       "Cycle detection, topological sorting, detecting strongly connected components, maze solving, and backtracking algorithms.",
   },
 
+  dijkstra: {
+    name: "Dijkstra's Algorithm",
+    language: "javascript",
+    code: `// graph is an adjacency list: { node: [{ to: 'B', weight: 3 }, ...], ... }
+function dijkstra(graph, start) {
+  const distances = {};
+  const previous = {};
+  const visited = new Set();
+
+  // initialize distances
+  for (const node of Object.keys(graph)) {
+    distances[node] = Infinity;
+    previous[node] = null;
+  }
+  distances[start] = 0;
+
+  // simple min-heap implementation
+  class MinHeap {
+    constructor() { this.heap = []; }
+    push(item) { this.heap.push(item); this._siftUp(); }
+    pop() {
+      if (!this.heap.length) return null;
+      const top = this.heap[0];
+      const last = this.heap.pop();
+      if (this.heap.length) { this.heap[0] = last; this._siftDown(); }
+      return top;
+    }
+    _siftUp() {
+      let i = this.heap.length - 1;
+      while (i > 0) {
+        const parent = Math.floor((i - 1) / 2);
+        if (this.heap[parent].dist <= this.heap[i].dist) break;
+        [this.heap[parent], this.heap[i]] = [this.heap[i], this.heap[parent]];
+        i = parent;
+      }
+    }
+    _siftDown() {
+      let i = 0;
+      const n = this.heap.length;
+      while (true) {
+        let left = 2 * i + 1;
+        let right = 2 * i + 2;
+        let smallest = i;
+        if (left < n && this.heap[left].dist < this.heap[smallest].dist) smallest = left;
+        if (right < n && this.heap[right].dist < this.heap[smallest].dist) smallest = right;
+        if (smallest === i) break;
+        [this.heap[i], this.heap[smallest]] = [this.heap[smallest], this.heap[i]];
+        i = smallest;
+      }
+    }
+  }
+
+  const heap = new MinHeap();
+  heap.push({ node: start, dist: 0 });
+
+  while (true) {
+    const entry = heap.pop();
+    if (!entry) break;
+    const { node: u, dist } = entry;
+    if (visited.has(u)) continue;
+    visited.add(u);
+
+    for (const edge of graph[u] || []) {
+      const v = edge.to;
+      const alt = dist + (edge.weight ?? 1);
+      if (alt < distances[v]) {
+        distances[v] = alt;
+        previous[v] = u;
+        heap.push({ node: v, dist: alt });
+      }
+    }
+  }
+
+  return { distances, previous };
+}
+`,
+    complexity: {
+      best: "O(E + V log V)",
+      average: "O(E + V log V)",
+      worst: "O(E + V log V)",
+      space: "O(V)",
+    },
+    stability: false,
+    inPlace: false,
+    description:
+      "Finds shortest paths from a source node to all other nodes in a weighted graph using a priority queue (min-heap). Works with non-negative edge weights.",
+    howItWorks: [
+      "Initialize all distances to Infinity except the source (0)",
+      "Use a min-priority queue to repeatedly select the closest unvisited node",
+      "Relax all outgoing edges from the selected node",
+      "Update distances and previous pointers when a shorter path is found",
+      "Continue until all reachable nodes are visited",
+    ],
+    advantages: [
+      "Efficient for sparse graphs with a proper priority queue",
+      "Finds shortest paths in weighted graphs with non-negative weights",
+    ],
+    disadvantages: [
+      "Requires non-negative weights (doesn't work with negative edges)",
+      "Heap operations add overhead compared to simple BFS in unweighted graphs",
+    ],
+    useCases:
+      "Routing, shortest-path problems, network analysis, and maps where edges have non-negative weights.",
+  },
+
   "n-queens": {
     name: "N-Queens Problem",
     language: "javascript",

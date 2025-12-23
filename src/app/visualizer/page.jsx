@@ -20,7 +20,7 @@ export default function VisualizerPage() {
       <header className="border-b border-border/40 bg-card/60 backdrop-blur-md shadow-sm h-16 flex items-center px-4 gap-4 z-50">
         <Button 
           variant="ghost" 
-          size="icon" 
+          size="icon"   
           onClick={() => setSidebarOpen(!sidebarOpen)}
           className="hover:bg-primary/10"
         >

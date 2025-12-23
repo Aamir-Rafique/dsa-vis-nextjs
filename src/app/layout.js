@@ -6,7 +6,7 @@ const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" })
 
 export const metadata = {
-  title: "DSA Visualizer - Learn Algorithms Interactively",
+  title: "DSAVis - DSA Algorithm visualizer",
   description:
     "Interactive visualization tool for learning Data Structures and Algorithms with step-by-step animations and code explanations",
   generator: "v0.app",

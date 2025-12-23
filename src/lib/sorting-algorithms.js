@@ -256,7 +256,7 @@ export const getSortingAlgorithm = (algorithmId) => {
     "bubble-sort": bubbleSort,
     // "selection-sort": selectionSort,
     // "insertion-sort": insertionSort,
-    // "quick-sort": quickSort,
+    "quick-sort": quickSort,
     "merge-sort": mergeSort,
     "heap-sort": heapSort,
   }

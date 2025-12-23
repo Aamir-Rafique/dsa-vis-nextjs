@@ -7,7 +7,8 @@ import { GraphVisualizer } from "./graph-visualizer"
 import { NQueensVisualizer } from "./nqueens-visualizer"
 import { CodeDisplay } from "./code-display"
 
-const SORTING_ALGORITHMS = ["bubble-sort", "selection-sort", "insertion-sort", "quick-sort", "merge-sort", "heap-sort"]
+// const SORTING_ALGORITHMS = ["bubble-sort", "selection-sort", "insertion-sort", "quick-sort", "merge-sort", "heap-sort"]
+const SORTING_ALGORITHMS = []
 const SEARCHING_ALGORITHMS = ["linear-search", "binary-search"]
 const RECURSION_ALGORITHMS = ["factorial", "tower-of-hanoi"]
 const LINKED_LIST_ALGORITHMS = [
@@ -16,7 +17,7 @@ const LINKED_LIST_ALGORITHMS = [
   "circular-linked-list",
   "circular-doubly-list",
 ]
-const GRAPH_ALGORITHMS = ["bfs", "dfs"]
+const GRAPH_ALGORITHMS = ["bfs", "dfs", "dijkstra"]
 const BACKTRACKING_ALGORITHMS = ["n-queens"]
 
 export function VisualizationContainer({ algorithm }) {
@@ -30,7 +31,7 @@ export function VisualizationContainer({ algorithm }) {
   return (
     <div className="h-full flex flex-col">
       {/* Main Content */}
-      <div className="flex-1 flex gap-4 p-4 overflow-hidden">
+      <div className={`flex-1 flex gap-4 p-4 ${algorithm.id === 'dijkstra'? '': 'overflow-hidden' }`}>
         {/* Visualizer */}
         <div className="flex-1 flex flex-col gap-4">
           <div className="flex-1 bg-card rounded-lg border border-border/50 overflow-hidden">

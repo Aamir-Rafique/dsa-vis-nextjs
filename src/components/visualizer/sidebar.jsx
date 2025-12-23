@@ -5,14 +5,6 @@ import { ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const ALGORITHMS = {
-  Sorting: [
-    // { id: "bubble-sort", name: "Bubble Sort", complexity: "O(n²)" },
-    // { id: "selection-sort", name: "Selection Sort", complexity: "O(n²)" },
-    // { id: "insertion-sort", name: "Insertion Sort", complexity: "O(n²)" },
-    { id: "merge-sort", name: "Merge Sort", complexity: "O(n log n)" },
-    // { id: "quick-sort", name: "Quick Sort", complexity: "O(n log n)" },
-    { id: "heap-sort", name: "Heap Sort", complexity: "O(n log n)" },
-  ],
   Searching: [
     { id: "linear-search", name: "Linear Search", complexity: "O(n)" },
     { id: "binary-search", name: "Binary Search", complexity: "O(log n)" },
@@ -22,17 +14,30 @@ const ALGORITHMS = {
     { id: "doubly-linked-list", name: "Doubly Linked List", complexity: "O(n)" },
     { id: "circular-linked-list", name: "Circular Linked List", complexity: "O(n)" },
   ],
+  // Graph: [
+  //   { id: "bfs", name: "Breadth-First Search", complexity: "O(V + E)" },
+  //   { id: "dfs", name: "Depth-First Search", complexity: "O(V + E)" },
+  // ],
   Graph: [
-    { id: "bfs", name: "Breadth-First Search", complexity: "O(V + E)" },
-    { id: "dfs", name: "Depth-First Search", complexity: "O(V + E)" },
-  ],
-  Tree: [
-    { id: "bst-traversal", name: "BST Traversal", complexity: "O(n)" },
-    { id: "binary-search-tree", name: "Binary Search Tree", complexity: "O(log n)" },
+    // { id: "bfs", name: "Breadth-First Search", complexity: "O(V + E)" },
+    // { id: "dfs", name: "Depth-First Search", complexity: "O(V + E)" },
+    { id: "dijkstra", name: "Dijkstra's Algorithm", complexity: "O((V + E) log V)" },
   ],
   Recursion: [
     { id: "factorial", name: "Factorial", complexity: "O(n)" },
     { id: "tower-of-hanoi", name: "Tower of Hanoi", complexity: "O(2ⁿ)" },
+  ],
+  Tree: [
+    { id: "binary-search-tree", name: "Binary Search Tree", complexity: "O(log n)" },
+    { id: "bst-traversal", name: "BST Traversal", complexity: "O(n)" },
+  ],
+  Sorting: [
+    // { id: "bubble-sort", name: "Bubble Sort", complexity: "O(n²)" },
+    // { id: "selection-sort", name: "Selection Sort", complexity: "O(n²)" },
+    // { id: "insertion-sort", name: "Insertion Sort", complexity: "O(n²)" },
+    { id: "merge-sort", name: "Merge Sort", complexity: "O(n log n)" },
+    // { id: "quick-sort", name: "Quick Sort", complexity: "O(n log n)" },
+    { id: "heap-sort", name: "Heap Sort", complexity: "O(n log n)" },
   ],
   Backtracking: [
     // { id: "n-queens", name: "N-Queens", complexity: "O(N!)" },

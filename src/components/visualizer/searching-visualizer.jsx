@@ -10,7 +10,7 @@ import { linearSearch, binarySearch } from "@/lib/searching-algorithms"
 export function SearchingVisualizer({ algorithm }) {
   const [array, setArray] = useState(Array.from({ length: 20 }, () => Math.floor(Math.random() * 100)))
   const [searchValue, setSearchValue] = useState("")
-  const [speed, setSpeed] = useState(50)
+  const [speed, setSpeed] = useState(20)
   const [isRunning, setIsRunning] = useState(false)
   const [searchingIndices, setSearchingIndices] = useState([])
   const [foundIndex, setFoundIndex] = useState(-1)
@@ -48,12 +48,18 @@ export function SearchingVisualizer({ algorithm }) {
 
     const target = Number.parseInt(searchValue, 10)
     setIsRunning(true)
-    resetSearch()
+    setSearchingIndices([])
+    setFoundIndex(-1)
+    setStats({ comparisons: 0, steps: 0, found: false })
 
     const updateState = (searching, found, steps) => {
       setSearchingIndices(searching)
       setFoundIndex(found)
-      setStats({ comparisons: stats.comparisons + 1, steps, found: found !== -1 })
+      setStats((prev) => ({ 
+        comparisons: prev.comparisons + 1, 
+        steps: steps, 
+        found: found !== -1 
+      }))
     }
 
     const searchFn = algorithm.id === "binary-search" ? binarySearch : linearSearch
@@ -92,7 +98,7 @@ export function SearchingVisualizer({ algorithm }) {
           <Slider
             value={[speed]}
             onValueChange={(value) => setSpeed(value[0])}
-            min={10}
+            min={5}
             max={100}
             step={5}
             disabled={isRunning}
@@ -140,11 +146,11 @@ export function SearchingVisualizer({ algorithm }) {
       </div>
 
       {/* Visualization */}
-      <div className="flex-1 flex items-end gap-1 p-4 bg-muted/30 rounded-lg">
+      <div className="flex-1 flex items-end gap-1 p-4 bg-muted/30 rounded-lg ">
         {array.map((value, idx) => (
           <div
             key={idx}
-            className={`flex-1 rounded-t transition ${
+            className={`flex-1 rounded-t transition flex justify-center relative ${
               foundIndex === idx
                 ? "bg-green-500 shadow-lg shadow-green-500/50"
                 : searchingIndices.includes(idx)
@@ -153,7 +159,9 @@ export function SearchingVisualizer({ algorithm }) {
             }`}
             style={{ height: `${(value / 100) * 100}%`, minHeight: "4px" }}
             title={`${value}`}
-          />
+          > 
+          <span className="absolute -bottom-5 text-sm ">{value}</span>
+          </div>
         ))}
       </div>
 

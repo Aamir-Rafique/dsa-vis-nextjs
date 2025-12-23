@@ -69,64 +69,69 @@ export function SortingVisualizer({ algorithm }) {
   }
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex  justify-center">
       {/* Controls */}
-      <div className="border-b border-border/40 p-4 bg-card/20 space-y-4">
-        {/* Playback Controls */}
-        <div className="flex items-center gap-2 flex-wrap">
-          <Button size="icon" onClick={handleSort} className={isRunning ? "bg-accent hover:bg-accent/90" : ""}>
-            {isRunning ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-          </Button>
-          <Button size="icon" variant="outline" onClick={handleReset}>
-            <RotateCcw className="w-4 h-4" />
-          </Button>
+      {/* <div className="border-b border-border/40 p-4 bg-card/20 space-y-4"> */}
 
-          {/* Stats */}
-          <div className="ml-auto flex items-center gap-6 text-sm">
-            <div className="space-y-1">
-              <div className="text-xs text-muted-foreground">Comparisons</div>
-              <div className="font-mono font-bold text-primary">{stats.comparisons}</div>
-            </div>
-            <div className="space-y-1">
-              <div className="text-xs text-muted-foreground">Swaps</div>
-              <div className="font-mono font-bold text-secondary">{stats.swaps}</div>
-            </div>
-            <div className="space-y-1">
-              <div className="text-xs text-muted-foreground">Time (ms)</div>
-              <div className="font-mono font-bold text-accent">{stats.time}</div>
-            </div>
+      {/* <div className="w-fit m-10">
+        <p>Visualizer coming soon for sorting Algorithms</p>
+      </div> */}
+
+      {/* Playback Controls */}
+      <div className="flex items-center gap-2 flex-wrap">
+        <Button size="icon" onClick={handleSort} className={isRunning ? "bg-accent hover:bg-accent/90" : ""}>
+          {isRunning ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+        </Button>
+        <Button size="icon" variant="outline" onClick={handleReset}>
+          <RotateCcw className="w-4 h-4" />
+        </Button>
+
+        {/* Stats */}
+        <div className="ml-auto flex items-center gap-6 text-sm">
+          <div className="space-y-1">
+            <div className="text-xs text-muted-foreground">Comparisons</div>
+            <div className="font-mono font-bold text-primary">{stats.comparisons}</div>
+          </div>
+          <div className="space-y-1">
+            <div className="text-xs text-muted-foreground">Swaps</div>
+            <div className="font-mono font-bold text-secondary">{stats.swaps}</div>
+          </div>
+          <div className="space-y-1">
+            <div className="text-xs text-muted-foreground">Time (ms)</div>
+            <div className="font-mono font-bold text-accent">{stats.time}</div>
           </div>
         </div>
-
-        {/* Speed Control */}
-        <div className="flex items-center gap-4">
-          <label className="text-sm font-medium text-muted-foreground w-12">Speed:</label>
-          <Slider
-            value={[speed]}
-            onValueChange={(value) => setSpeed(value[0])}
-            min={10}
-            max={100}
-            step={5}
-            className="flex-1"
-          />
-          <span className="text-sm font-medium w-8 text-right">{speed}%</span>
-        </div>
-
-        {/* Array Size Control */}
-        <div className="flex items-center gap-4">
-          <label className="text-sm font-medium text-muted-foreground w-12">Size:</label>
-          <Slider
-            value={[arraySize]}
-            onValueChange={(value) => setArraySize(value[0])}
-            min={10}
-            max={200}
-            step={10}
-            disabled={isRunning}
-            className="flex-1"
-          />
-          <span className="text-sm font-medium w-8 text-right">{arraySize}</span>
-        </div>
       </div>
+
+      {/* Speed Control */}
+      <div className="flex items-center gap-4">
+        <label className="text-sm font-medium text-muted-foreground w-12">Speed:</label>
+        <Slider
+          value={[speed]}
+          onValueChange={(value) => setSpeed(value[0])}
+          min={10}
+          max={100}
+          step={5}
+          className="flex-1"
+        />
+        <span className="text-sm font-medium w-8 text-right">{speed}%</span>
+      </div>
+
+      {/* Array Size Control */}
+      <div className="flex items-center gap-4">
+        <label className="text-sm font-medium text-muted-foreground w-12">Size:</label>
+        <Slider
+          value={[arraySize]}
+          onValueChange={(value) => setArraySize(value[0])}
+          min={10}
+          max={200}
+          step={10}
+          disabled={isRunning}
+          className="flex-1"
+        />
+        <span className="text-sm font-medium w-8 text-right">{arraySize}</span>
+      </div>
+      {/* </div> */}
 
       {/* Visualization Canvas */}
       <div className="flex-1 flex gap-4 p-4 overflow-hidden">

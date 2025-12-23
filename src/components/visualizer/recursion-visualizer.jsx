@@ -9,7 +9,7 @@ import { Slider } from "@/components/ui/slider"
 export function RecursionVisualizer({ algorithm }) {
   const [inputValue, setInputValue] = useState("5")
   const [isRunning, setIsRunning] = useState(false)
-  const [speed, setSpeed] = useState(50)
+  const [speed, setSpeed] = useState(20)
   const [result, setResult] = useState(null)
   const [steps, setSteps] = useState([])
   const [currentStep, setCurrentStep] = useState(0)
@@ -69,7 +69,7 @@ export function RecursionVisualizer({ algorithm }) {
     // Animate through steps
     for (let i = 0; i < newSteps.length; i++) {
       setCurrentStep(i + 1)
-      await new Promise((resolve) => setTimeout(resolve, 101 - speed))
+      await new Promise((resolve) => setTimeout(resolve, 200 - speed))
     }
 
     setIsRunning(false)

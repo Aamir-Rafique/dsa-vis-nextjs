@@ -121,23 +121,32 @@ const ALL_ALGORITHMS = [
   },
 
   // Graph
+  // {
+  //   id: "bfs",
+  //   name: "Breadth-First Search",
+  //   category: "Graph",
+  //   complexity: "O(V + E)",
+  //   description: "Explores graph level-by-level using a queue",
+  //   difficulty: "Medium",
+  //   tags: ["traversal", "queue-based"],
+  // },
+  // {
+  //   id: "dfs",
+  //   name: "Depth-First Search",
+  //   category: "Graph",
+  //   complexity: "O(V + E)",
+  //   description: "Explores graph depth-first using a stack or recursion",
+  //   difficulty: "Medium",
+  //   tags: ["traversal", "recursive"],
+  // },
   {
-    id: "bfs",
-    name: "Breadth-First Search",
+    id: "dijkstra",
+    name: "Dijkstra's Algorithm",
     category: "Graph",
-    complexity: "O(V + E)",
-    description: "Explores graph level-by-level using a queue",
-    difficulty: "Medium",
-    tags: ["traversal", "queue-based"],
-  },
-  {
-    id: "dfs",
-    name: "Depth-First Search",
-    category: "Graph",
-    complexity: "O(V + E)",
-    description: "Explores graph depth-first using a stack or recursion",
-    difficulty: "Medium",
-    tags: ["traversal", "recursive"],
+    complexity: "O(E + V log V)",
+    description: "Finds shortest paths from a source in a weighted graph using a priority queue",
+    difficulty: "Hard",
+    tags: ["shortest-path", "weighted", "priority-queue"],
   },
 
   // Tree

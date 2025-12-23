@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react"
 
-export function GraphCanvas({ graph, visitedNodes, currentNode, highlightEdges }) {
+export function GraphCanvas({ graph, visitedNodes, currentNode, highlightEdges, showWeights = false }) {
   const canvasRef = useRef(null)
 
   useEffect(() => {
@@ -60,6 +60,30 @@ export function GraphCanvas({ graph, visitedNodes, currentNode, highlightEdges }
       ctx.lineTo(to.x - headlen * Math.cos(angle + Math.PI / 6), to.y - headlen * Math.sin(angle + Math.PI / 6))
       ctx.closePath()
       ctx.fill()
+
+      // Draw edge weight if showWeights is true
+      if (showWeights && edge.weight !== undefined) {
+        const midX = (from.x + to.x) / 2
+        const midY = (from.y + to.y) / 2
+        
+        // Draw background circle for weight
+        ctx.fillStyle = "rgba(255, 255, 255, 0.9)"
+        ctx.beginPath()
+        ctx.arc(midX, midY, 14, 0, Math.PI * 2)
+        ctx.fill()
+        
+        // Draw weight border
+        ctx.strokeStyle = "rgb(59, 130, 246)" // Blue
+        ctx.lineWidth = 2
+        ctx.stroke()
+        
+        // Draw weight text
+        ctx.fillStyle = "rgb(30, 58, 138)" // Dark blue
+        ctx.font = "bold 12px sans-serif"
+        ctx.textAlign = "center"
+        ctx.textBaseline = "middle"
+        ctx.fillText(edge.weight.toString(), midX, midY)
+      }
     })
 
     // Draw nodes
@@ -92,7 +116,7 @@ export function GraphCanvas({ graph, visitedNodes, currentNode, highlightEdges }
       ctx.textBaseline = "middle"
       ctx.fillText(node.label, pos.x, pos.y)
     })
-  }, [graph, visitedNodes, currentNode])
+  }, [graph, visitedNodes, currentNode, showWeights])
 
   return <canvas ref={canvasRef} className="w-full h-full" />
 }

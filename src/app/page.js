@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { ChevronRight, Brain, Zap, Code2, Sparkles, BookOpen, GitBranch } from "lucide-react"
+import { ChevronRight, Brain, Zap, Code2, Sparkles, BookOpen, GitBranch, Bold } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { Badge } from "@/components/ui/badge"
@@ -17,7 +17,7 @@ export default function Home() {
               <Brain className="w-6 h-6 text-primary-foreground" />
             </div>
             <div>
-              <h1 className="text-xl font-bold">DSA Visualizer</h1>
+              <h1 className="text-xl font-bold">DSAVis</h1>
               <p className="text-xs text-muted-foreground">Learn by watching</p>
             </div>
           </div>
@@ -46,13 +46,13 @@ export default function Home() {
           <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/5 dark:bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/5 dark:bg-secondary/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
-        
+
         <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
           <Badge variant="outline" className="px-4 py-1.5 text-sm border-primary/30 bg-primary/5">
             <Sparkles className="w-3 h-3 mr-2 inline" />
             Interactive Learning Platform
           </Badge>
-          
+
           <div className="space-y-6">
             <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-balance leading-tight">
               Master Algorithms Through{" "}
@@ -85,15 +85,17 @@ export default function Home() {
           {/* Quick Stats */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-12 px-4">
             <div className="group p-6 rounded-xl bg-gradient-to-br from-card to-card/50 border border-border/50 space-y-2 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 transition-all hover:-translate-y-1">
-              <div className="text-3xl font-bold bg-gradient-to-r from-accent to-accent/80 text-transparent bg-clip-text">30+</div>
+              <div className="text-3xl font-bold bg-gradient-to-r from-accent to-accent/80 text-transparent bg-clip-text">+</div>
               <div className="text-sm text-muted-foreground font-medium">Algorithms</div>
             </div>
             <div className="group p-6 rounded-xl bg-gradient-to-br from-card to-card/50 border border-border/50 space-y-2 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all hover:-translate-y-1">
               <div className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/80 text-transparent bg-clip-text">100%</div>
               <div className="text-sm text-muted-foreground font-medium">Interactive</div>
             </div>
-            <div className="group p-6 rounded-xl bg-gradient-to-br from-card to-card/50 border border-border/50 space-y-2 hover:border-secondary/50 hover:shadow-lg hover:shadow-secondary/10 transition-all hover:-translate-y-1">
-              <div className="text-3xl font-bold bg-gradient-to-r from-secondary to-secondary/80 text-transparent bg-clip-text">Live</div>
+            <div className="group flex flex-col items-center gap-1.5 p-6 rounded-xl bg-gradient-to-br from-card to-card/50 border border-border/50 space-y-2 hover:border-secondary/50 hover:shadow-lg hover:shadow-secondary/10 transition-all hover:-translate-y-1">
+              {/* <div className="text-3xl font-bold text-center  flex-1 justify-center"> */}
+                <Code2 color="blue" size={30} />
+              {/* </div> */}
               <div className="text-sm text-muted-foreground font-medium">Code Display</div>
             </div>
           </div>
@@ -108,7 +110,7 @@ export default function Home() {
               <Sparkles className="w-3 h-3 mr-2 inline" />
               Features
             </Badge>
-            <h3 className="text-4xl font-bold">Why DSA Visualizer?</h3>
+            <h3 className="text-4xl font-bold">Why DSAVis?</h3>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
               Everything you need to understand data structures and algorithms
             </p>
@@ -176,9 +178,9 @@ export default function Home() {
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
             <Brain className="w-4 h-4 text-primary" />
-            <p>DSA Visualizer - Learn Algorithms Interactively</p>
+            <p>DSAVis - Learn Algorithms Interactively</p>
           </div>
-          <p>Built with ❤️ for students and developers</p>
+          <p>Built with ❤️ by Aamir Rafique & Raja Shadab</p>
         </div>
       </footer>
     </div>

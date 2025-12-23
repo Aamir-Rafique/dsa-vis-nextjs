@@ -10,7 +10,7 @@ import { LinkedListCanvas } from "./linked-list-canvas"
 export function LinkedListVisualizer({ algorithm }) {
   const [values, setValues] = useState([5, 12, 8, 3, 15])
   const [inputValue, setInputValue] = useState("")
-  const [speed, setSpeed] = useState(50)
+  const [speed, setSpeed] = useState(30)
   const [isAnimating, setIsAnimating] = useState(false)
   const [highlightedIndex, setHighlightedIndex] = useState(-1)
   const [animationType, setAnimationType] = useState(null)
@@ -72,7 +72,7 @@ export function LinkedListVisualizer({ algorithm }) {
 
     for (let i = 0; i < values.length; i++) {
       setHighlightedIndex(i)
-      await new Promise((resolve) => setTimeout(resolve, 101 - speed))
+      await new Promise((resolve) => setTimeout(resolve, 200 - speed))
     }
 
     setHighlightedIndex(-1)
@@ -150,7 +150,7 @@ export function LinkedListVisualizer({ algorithm }) {
           <Slider
             value={[speed]}
             onValueChange={(value) => setSpeed(value[0])}
-            min={10}
+            min={5}
             max={100}
             step={5}
             disabled={isAnimating}
@@ -171,7 +171,7 @@ export function LinkedListVisualizer({ algorithm }) {
       </div>
 
       {/* Canvas Visualization */}
-      <div className="flex-1 bg-muted/30 rounded-lg p-4 flex items-center justify-center overflow-auto">
+      <div className="flex-1 bg-muted/30 rounded-lg p-4 flex items-center justify-center overflow-auto ">
         <LinkedListCanvas
           values={values}
           highlightedIndex={highlightedIndex}
