@@ -33,7 +33,7 @@ export function VisualizationContainer({ algorithm }) {
   return (
     <div className="h-full flex flex-col">
       {/* Main Content */}
-      <div className={`flex-1 flex gap-4 p-4 ${algorithm.id === 'dijkstra' || 'bst-traversal' || 'binary-search-tree' ? '' : 'overflow-hidden'}`}>
+      <div className={`flex-1 flex gap-4 p-4 ${(algorithm.id === 'dijkstra' || algorithm.id === 'bst-traversal' || algorithm.id === 'binary-search-tree') ? '' : 'overflow-hidden'}`}>
         {/* Visualizer */}
         <div className="flex-1 flex flex-col gap-4">
           <div className="flex-1 bg-card rounded-lg border border-border/50 overflow-hidden">

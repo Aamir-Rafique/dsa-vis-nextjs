@@ -242,7 +242,7 @@ export function GraphVisualizer({ algorithm }) {
                   const isSource = node.id === startNode
                   const isReachable = dist !== Infinity
 
-                  return (
+                  return (  
                     <div
                       key={node.id}
                       className={`p-3 rounded-lg border transition-all ${isSource
