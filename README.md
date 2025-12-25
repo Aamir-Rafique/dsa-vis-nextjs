@@ -214,37 +214,6 @@ dsa-vis-nextjs/
 | Linear Search | O(n) | O(1) |
 | Binary Search | O(log n) | O(1) |
 
-## 🎨 Key Implementation Details
-
-### Immutable State Updates
-All tree operations return new node instances to ensure React detects changes:
-```javascript
-const insertNode = (root, value) => {
-  if (!root) return new TreeNode(value);
-  const newRoot = new TreeNode(root.value);
-  newRoot.left = insertNode(root.left, value);
-  newRoot.right = root.right;
-  return newRoot;
-};
-```
-
-### Pause/Resume Functionality
-```javascript
-// Pause control using refs
-const pauseRef = useRef(false);
-
-while (pauseRef.current) {
-  await new Promise(resolve => setTimeout(resolve, 100));
-}
-```
-
-### Algorithm-Specific Canvas Rendering
-Each algorithm has unique visual metaphors:
-- **Bubble Sort:** Rounded bars with glow effects
-- **Quick Sort:** Purple pivot with arrow indicators
-- **Merge Sort:** Gradient fills with dashed dividers
-- **Tower of Hanoi:** Colorful gradient disks with shadows
-
 ## 🎯 Future Enhancements
 
 - [ ] Dynamic Programming visualizations
@@ -274,6 +243,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 🙏 Acknowledgments
 
 - Inspired by [VisuAlgo](https://visualgo.net/)
+- Inspired by [Algoritm Visualizer](https://algorithm-visualizer.org/)
 - Built with [Next.js](https://nextjs.org/)
 - UI components from [Radix UI](https://www.radix-ui.com/)
 - Icons from [Lucide](https://lucide.dev/)
