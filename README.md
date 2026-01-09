@@ -7,6 +7,7 @@ An interactive web-based platform for visualizing data structures and algorithms
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-38bdf8)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![alt text](proj-11.png) 
 
 ## 🌟 Features
 
@@ -51,6 +52,8 @@ An interactive web-based platform for visualizing data structures and algorithms
 - **Color Psychology** - Semantic color coding (blue=neutral, orange=active, red=action, green=success)
 
 ## 🚀 Getting Started
+
+![alt text](proj-11_hover.png)
 
 ### Prerequisites
 
