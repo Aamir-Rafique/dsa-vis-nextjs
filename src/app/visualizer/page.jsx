@@ -9,9 +9,11 @@ import { AlgorithmBrowser } from "@/components/visualizer/algorithm-browser"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { Badge } from "@/components/ui/badge"
-import { SiGithub} from 'react-icons/si'
+import { SiGithub } from 'react-icons/si'
+import useIsMobile from "@/hooks/useIsMobile"
 
 export default function VisualizerPage() {
+  const isMobile = useIsMobile(768);
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [selectedAlgorithm, setSelectedAlgorithm] = useState(null)
 
@@ -19,21 +21,21 @@ export default function VisualizerPage() {
     <div className="h-screen flex flex-col bg-gradient-to-br from-background via-background to-muted/10">
       {/* Header */}
       <header className="border-b border-border/40 bg-card/60 backdrop-blur-md shadow-sm h-16 flex items-center px-4 gap-4 z-50">
-        <Button 
+        <Button
           variant="ghost"
-          title={sidebarOpen? 'Close side panel':'Open Side Panel'} 
-          size="icon"   
+          title={sidebarOpen ? 'Close side panel' : 'Open Side Panel'}
+          size="icon"
           onClick={() => setSidebarOpen(!sidebarOpen)}
           className="hover:bg-primary/10"
         >
           {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </Button>
-        
+
         <Link href="/visualizer" className="flex items-center gap-2 hover:opacity-75 transition group">
           <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
         </Link>
 
-        
+
         <div className="flex-1 flex items-center justify-center">
           {selectedAlgorithm ? (
             <div className="flex items-center gap-3">
@@ -54,18 +56,18 @@ export default function VisualizerPage() {
             </div>
           )}
         </div>
-        
+
         {/* <ThemeToggle /> */}
-        
+
         <Link href="/" className="flex items-center gap-2 hover:opacity-75 transition group mr-5" title="Home">
-          <Home className="w-5 h-5 group-hover:-translate-x-1 transition-transform"  />
+          <Home className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
         </Link>
-        
-        <a href="https://aamirrafique.netlify.app/"  
-        rel="noopener"
-        target="_blank"
-        className="flex items-center gap-2 hover:opacity-75 transition group mr-10" title="Dev Portfolio">
-          <SiGithub className="w-5 h-5 group-hover:-translate-x-1 transition-transform"  />
+
+        <a href="https://aamirrafique.netlify.app/"
+          rel="noopener"
+          target="_blank"
+          className="flex items-center gap-2 hover:opacity-75 transition group mr-10" title="Dev Portfolio">
+          <SiGithub className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
         </a>
 
       </header>
@@ -73,7 +75,7 @@ export default function VisualizerPage() {
       {/* Main Content */}
       <div className="flex-1 flex overflow-hidden">
         {/* Sidebar */}
-        {sidebarOpen && (
+        {!isMobile && sidebarOpen && (
           <div className="w-64 border-r border-border/40 bg-card/40 backdrop-blur-sm overflow-y-auto">
             <Sidebar onSelectAlgorithm={setSelectedAlgorithm} selectedAlgorithm={selectedAlgorithm} />
           </div>

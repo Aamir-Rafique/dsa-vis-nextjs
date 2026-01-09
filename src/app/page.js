@@ -180,7 +180,7 @@ export default function Home() {
             <Brain className="w-4 h-4 text-primary" />
             <p>DSAVis - Learn Algorithms Interactively</p>
           </div>
-          <p>Built with ❤️ by Aamir Rafique & Raja Shadab</p>
+          <p>Built with ❤️ by Aamir Rafique</p>
         </div>
       </footer>
     </div>

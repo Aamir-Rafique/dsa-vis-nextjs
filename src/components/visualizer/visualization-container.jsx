@@ -7,6 +7,7 @@ import { GraphVisualizer } from "./graph-visualizer"
 import { NQueensVisualizer } from "./nqueens-visualizer"
 import { TreeVisualizer } from "./tree-visualizer"
 import { CodeDisplay } from "./code-display"
+import useIsMobile from "@/hooks/useIsMobile"
 
 const SORTING_ALGORITHMS = ["bubble-sort", "merge-sort", "quick-sort", "heap-sort"]
 const SEARCHING_ALGORITHMS = ["linear-search", "binary-search"]
@@ -22,6 +23,8 @@ const TREE_ALGORITHMS = ["binary-search-tree", "bst-traversal"]
 const BACKTRACKING_ALGORITHMS = ["n-queens"]
 
 export function VisualizationContainer({ algorithm }) {
+  const isMobile = useIsMobile(768);
+
   const isSortingAlgorithm = SORTING_ALGORITHMS.includes(algorithm.id)
   const isSearchingAlgorithm = SEARCHING_ALGORITHMS.includes(algorithm.id)
   const isRecursionAlgorithm = RECURSION_ALGORITHMS.includes(algorithm.id)
@@ -32,37 +35,46 @@ export function VisualizationContainer({ algorithm }) {
 
   return (
     <div className="h-full flex flex-col">
+
+      {/* show this modal if viewing on mobile */}
+      {isMobile &&
+        <div className="z-50 p-5 mx-auto my-auto font-semibold bg-white rounded-2xl ">
+          <p>Mobile screen Visualization coming soon...</p>
+        </div>}
+
       {/* Main Content */}
-      <div className={`flex-1 flex gap-4 p-4 ${(algorithm.id === 'dijkstra' || algorithm.id === 'bst-traversal' || algorithm.id === 'binary-search-tree') ? '' : 'overflow-hidden'}`}>
-        {/* Visualizer */}
-        <div className="flex-1 flex flex-col gap-4">
-          <div className="flex-1 bg-card rounded-lg border border-border/50 overflow-hidden">
-            {isSortingAlgorithm && <SortingVisualizer algorithm={algorithm} />}
-            {isSearchingAlgorithm && <SearchingVisualizer algorithm={algorithm} />}
-            {isRecursionAlgorithm && <RecursionVisualizer algorithm={algorithm} />}
-            {isLinkedListAlgorithm && <LinkedListVisualizer algorithm={algorithm} />}
-            {isGraphAlgorithm && <GraphVisualizer algorithm={algorithm} />}
-            {isTreeAlgorithm && <TreeVisualizer algorithm={algorithm} />}
-            {isBacktrackingAlgorithm && <NQueensVisualizer />}
-            {!isSortingAlgorithm &&
-              !isSearchingAlgorithm &&
-              !isRecursionAlgorithm &&
-              !isLinkedListAlgorithm &&
-              !isGraphAlgorithm &&
-              !isTreeAlgorithm &&
-              !isBacktrackingAlgorithm && (
-                <div className="h-full flex items-center justify-center text-muted-foreground">
-                  <p>Visualizer coming soon for {algorithm.name}</p>
-                </div>
-              )}
+      {!isMobile &&
+        <div className={`flex-1 flex gap-4 p-4 ${(algorithm.id === 'dijkstra' || algorithm.id === 'bst-traversal' || algorithm.id === 'binary-search-tree') ? '' : 'overflow-hidden'}`}>
+          {/* Visualizer */}
+          <div className="flex-1 flex flex-col gap-4">
+            <div className="flex-1 bg-card rounded-lg border border-border/50 overflow-hidden">
+              {isSortingAlgorithm && <SortingVisualizer algorithm={algorithm} />}
+              {isSearchingAlgorithm && <SearchingVisualizer algorithm={algorithm} />}
+              {isRecursionAlgorithm && <RecursionVisualizer algorithm={algorithm} />}
+              {isLinkedListAlgorithm && <LinkedListVisualizer algorithm={algorithm} />}
+              {isGraphAlgorithm && <GraphVisualizer algorithm={algorithm} />}
+              {isTreeAlgorithm && <TreeVisualizer algorithm={algorithm} />}
+              {isBacktrackingAlgorithm && <NQueensVisualizer />}
+              {!isSortingAlgorithm &&
+                !isSearchingAlgorithm &&
+                !isRecursionAlgorithm &&
+                !isLinkedListAlgorithm &&
+                !isGraphAlgorithm &&
+                !isTreeAlgorithm &&
+                !isBacktrackingAlgorithm && (
+                  <div className="h-full flex items-center justify-center text-muted-foreground">
+                    <p>Visualizer coming soon for {algorithm.name}</p>
+                  </div>
+                )}
+            </div>
+          </div>
+
+          {/* Code Display */}
+          <div className="w-96 bg-card rounded-lg border border-border/50 overflow-hidden flex flex-col">
+            <CodeDisplay algorithm={algorithm} />
           </div>
         </div>
-
-        {/* Code Display */}
-        <div className="w-96 bg-card rounded-lg border border-border/50 overflow-hidden flex flex-col">
-          <CodeDisplay algorithm={algorithm} />
-        </div>
-      </div>
+      }
     </div>
   )
 }
