@@ -85,7 +85,7 @@ export default function Home() {
           {/* Quick Stats */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-12 px-4">
             <div className="group p-6 rounded-xl bg-gradient-to-br from-card to-card/50 border border-border/50 space-y-2 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/10 transition-all hover:-translate-y-1">
-              <div className="text-3xl font-bold bg-gradient-to-r from-accent to-accent/80 text-transparent bg-clip-text">+</div>
+              <div className="text-3xl font-bold bg-gradient-to-r from-accent to-accent/80 text-transparent bg-clip-text">10+</div>
               <div className="text-sm text-muted-foreground font-medium">Algorithms</div>
             </div>
             <div className="group p-6 rounded-xl bg-gradient-to-br from-card to-card/50 border border-border/50 space-y-2 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all hover:-translate-y-1">
