@@ -1,4 +1,4 @@
-# 🎨 DSAVis - Data Structures & Algorithms Visualizer
+# DSAVis - Data Structures & Algorithms Visualizer
 
 An interactive web-based platform for visualizing data structures and algorithms with real-time animations, step-by-step execution, and comprehensive educational content.
 
@@ -42,13 +42,9 @@ An interactive web-based platform for visualizing data structures and algorithms
 - **Traversal Visualization**
 - **Pointer Connection Display**
 
-### ♟️ Backtracking
-- **N-Queens Problem** - Board state and solution visualization
-
 ## 🎯 Educational Features
 
 - **Algorithm Insights** - Educational tip boxes explaining key concepts
-- **Live Step Commentary** - Real-time narration of operations
 - **Complexity Analysis** - Time and space complexity information
 - **Code Display** - Pseudocode and implementation details
 - **Statistics Dashboard** - Comparisons, swaps, and operation counts
